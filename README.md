@@ -11,5 +11,5 @@
 - Операторы сравнения и арифметические операции.
 
 ![Intermediate SQL certificate](sql1.png)
-
+![Joining date in SQL certificate](sql2.png)
 
