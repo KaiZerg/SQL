@@ -9,3 +9,5 @@
 - ROUND() и агрегатные функции;
 - Сортировка и группировка с помощью ORDER BY, DESC, GROUP BY, HAVING
 - Операторы сравнения и арифметические операции.
+
+[Intermediate SQL certificate](sql1.png) 
