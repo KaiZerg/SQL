@@ -1,0 +1,97 @@
+-- задача 1
+SELECT DISTINCT user_id
+FROM   user_actions
+ORDER BY user_id
+
+-- задача 2
+SELECT DISTINCT courier_id,
+                order_id
+FROM   courier_actions
+ORDER BY courier_id, order_id
+
+-- задача 3
+SELECT max(price) as max_price,
+       min(price) as min_price
+FROM   products
+
+-- задача 4
+SELECT count(*) as dates,
+       count(birth_date) as dates_not_null
+FROM   users
+
+-- задача 5
+SELECT count(user_id) as users,
+       count(distinct user_id) as unique_users
+FROM   user_actions
+
+-- задача 6
+SELECT count(courier_id) as couriers
+FROM   couriers
+WHERE  sex = 'female'
+
+-- задача 7
+SELECT min(time) as first_delivery,
+       max(time) as last_delivery
+FROM   courier_actions
+WHERE  action = 'deliver_order'
+
+-- задача 8
+SELECT sum(price) as order_price
+FROM   products
+WHERE  name in ('сухарики', 'чипсы', 'энергетический напиток')
+
+-- задача 9
+SELECT count(order_id) as orders
+FROM   orders
+WHERE  array_length(product_ids, 1) >= 9
+
+-- задача 10
+SELECT min(age(birth_date))::varchar as min_age
+FROM   couriers
+WHERE  sex = 'male'
+
+-- задача 11
+SELECT sum(case when name = 'сухарики' then price * 3
+                when name = 'чипсы' then price * 2
+                when name = 'энергетический напиток' then price
+                else 0 end) as order_price
+FROM   products
+
+-- задача 12
+SELECT round(avg(price), 2) as avg_price
+FROM   products
+WHERE  (name like '%чай%'
+    or name like '%кофе%')
+   and name not like '%иван-чай%'
+   and name not like 'чайный гриб'
+   
+-- задача 13
+SELECT age(max(birth_date), min(birth_date))::varchar as age_diff
+FROM   users
+WHERE  sex = 'male'
+
+-- задача 14
+SELECT round(avg(array_length(product_ids, 1)), 2) as avg_order_size
+FROM   orders
+WHERE  date_part('dow', creation_time) in (6, 0)
+
+-- задача 15
+SELECT count(distinct user_id) as unique_users,
+       count(distinct order_id) as unique_orders,
+       round(count(distinct order_id)::decimal / count(distinct user_id),
+             2) as orders_per_user
+FROM   user_actions
+
+-- задача 16*
+SELECT count(distinct user_id) - count(distinct user_id) filter (WHERE action = 'cancel_order') as users_count
+FROM   user_actions
+
+-- задача 17*
+SELECT count(order_id) as orders,
+       count(order_id) filter (WHERE array_length(product_ids, 1) >= 5) as large_orders,
+       round(count(order_id) filter (WHERE array_length(product_ids, 1) >= 5)::decimal / count(order_id),
+             2) as large_orders_share
+FROM   orders
+
+-- задача 18
+-- задача 19

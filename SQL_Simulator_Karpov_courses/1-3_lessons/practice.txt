@@ -1,0 +1,105 @@
+-- задача 1
+SELECT product_id,
+       name,
+       price
+FROM   products
+
+-- задача 2
+SELECT product_id,
+       name,
+       price
+FROM   products
+ORDER BY name
+
+-- задача 3
+SELECT courier_id,
+       order_id,
+       action,
+       time
+FROM   courier_actions
+ORDER BY courier_id, action, time desc limit 1000
+
+-- задача 4
+SELECT name,
+       price
+FROM   products
+ORDER BY price desc limit 5
+
+-- задача 5
+SELECT name as product_name,
+       price as product_price
+FROM   products
+ORDER BY price desc limit 5
+
+-- задача 6
+SELECT name,
+       length(name) as name_length,
+       price
+FROM   products
+ORDER BY name_length desc limit 1
+
+-- задача 7
+SELECT name,
+       upper(split_part(name, ' ', 1)) as first_word,
+       price
+FROM   products
+ORDER BY name
+
+-- задача 8
+SELECT name,
+       price,
+       cast(price as varchar) as price_char
+FROM   products
+ORDER BY name
+
+-- задача 9
+SELECT concat('Заказ № ', order_id, ' создан ', date(creation_time)) as order_info
+FROM   orders limit 200
+
+-- задача 10
+SELECT courier_id,
+       date_part('year', birth_date) as birth_year
+FROM   couriers
+ORDER BY birth_year desc, courier_id
+
+-- задача 11
+SELECT courier_id,
+       coalesce(date_part('year', birth_date)::varchar, 'unknown') as birth_year
+FROM   couriers
+ORDER BY birth_year desc, courier_id
+
+-- задача 12
+SELECT product_id,
+       name,
+       price as old_price,
+       price*1.05 as new_price
+FROM   products
+ORDER BY new_price desc, product_id
+
+-- задача 13
+SELECT product_id,
+       name,
+       price as old_price,
+       round(price*1.05, 1) as new_price
+FROM   products
+ORDER BY new_price desc, product_id
+
+-- задача 14
+SELECT product_id,
+       name,
+       price as old_price,
+       case when price <= 100 or
+                 name = 'икра' then price
+            when price > 100 then price*1.05
+            else 0 end new_price
+FROM   products
+ORDER BY new_price desc, product_id
+
+-- задача 15
+SELECT product_id,
+       name,
+       price,
+       round(price/120*20, 2) as tax,
+       round(price - price/120*20, 2) as price_before_tax
+FROM   products
+ORDER BY price_before_tax desc, product_id
