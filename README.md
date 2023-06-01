@@ -10,7 +10,7 @@
 - Сортировка и группировка с помощью ORDER BY, DESC, GROUP BY, HAVING
 - Операторы сравнения и арифметические операции.
 
-[ПРОЕКТ №2](/SQL_Simulator_Karpov_courses)  
+[ПРОЕКТ №2 - SQL тренажер от Karpov.courses](/SQL_Simulator_Karpov_courses)  
   Краткое описание проекта: 
 - Базовые SQL запросы;
 - Фильтрация данных;
