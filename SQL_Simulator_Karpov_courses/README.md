@@ -8,6 +8,7 @@
 - [Подзапросы](7_lesson_subqueries) 
 - [Виды объединения таблиц](8_lesson_joins) 
 
+## Схема БД:
 ![Схема БД](BD_scheme.png)
 ![Структура таблиц](structure_1.png)
 ![Структура таблиц](structure_2.png)
