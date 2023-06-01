@@ -18,6 +18,7 @@
 - Группировка данных;
 - Подзапросы;
 - Виды Join-ов.
+
 [Онлайн сертификат на сайте школы Карпова](https://lab.karpov.courses/live_certificate/efae7330-20b7-4032-b403-6907be2fe0e4/)
 
 ![Intermediate SQL certificate](sql1.png)
